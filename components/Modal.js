@@ -8,7 +8,7 @@ const imageProfile = Asset.fromModule(require("../assets/img/icono-imagen.png"))
 const leftBack = Asset.fromModule(require("../assets/img/left-arrow.png")).uri;
 
 
-const Modal = ({ selectImagePost, setSelectImagePost, modalViseble, closeModal, selectedImageProfile, addPost }) => {
+const ModalPublicaciones = ({ selectImagePost, setSelectImagePost, modalViseble, closeModal, selectedImageProfile, addPost }) => {
 
 
 
@@ -171,4 +171,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Modal;
+export default ModalPublicaciones;

@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Asset } from "expo-asset";
 
 import { useImages } from "./PhotoContext";
-import Modal from "./Modal";
+import ModalPublicaciones from "./Modal";
 
 
 const imageProfile = Asset.fromModule(require("../assets/img/icono-usuario.png")).uri
@@ -164,7 +164,7 @@ const Publicaciones = () => {
           <Text style={{color: "#fff", fontSize: 20, fontWeight: 800}} >+</Text>
       </TouchableOpacity>
 
-      <Modal 
+      <ModalPublicaciones
 
         selectImagePost = {selectImagePost}
         setSelectImagePost = {setSelectImagePost}

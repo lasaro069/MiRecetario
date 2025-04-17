@@ -1,9 +1,9 @@
 
-import react, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext } from "react";
 
 const ImageContext = createContext();
 
-export const imageProvider = ({children}) => {
+export const ImageProvider = ({children}) => {
 
   const [ images, setImages] = useState([]);
 
@@ -16,7 +16,7 @@ export const imageProvider = ({children}) => {
   
   return(
 
-    <ImageContext.Provider value={{image, addImage}}>
+    <ImageContext.Provider value={{images, addImage}}>
 
       {children};
     </ImageContext.Provider>
