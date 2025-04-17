@@ -6,7 +6,6 @@ import Profile from "./components/Profile";
 import * as ImagePicker from 'expo-image-picker';
 
 const imageProfile = Asset.fromModule(require("./assets/img/icono-imagen.png")).uri;
-const leftBack = Asset.fromModule(require("./assets/img/left-arrow.png")).uri;
 
 
 const App = () => {
@@ -169,11 +168,6 @@ const App = () => {
 
 
       </ScrollView>
-
-      {/* boton para ir al modal para nueva publicacion */}
-      <TouchableOpacity onPress={openModal} style={{ position: "absolute", top: 800, right: 15,  zIndex: 100, width: 50, height: 50, backgroundColor: "#ffc93c", borderRadius: 25, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
-          <Text style={{color: "#fff", fontSize: 20, fontWeight: 800}} >+</Text>
-      </TouchableOpacity>
 
       {/* // Modal para agregar una publicacion al blog */}
 
