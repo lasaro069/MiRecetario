@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Publicaciones from "./Publicaciones";
 import Fotos from "./Fotos";
@@ -14,7 +14,16 @@ const MainNavigation = () => {
 
   return(
 
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{ 
+        tabBarShowIcon: false,
+        tabBarStyle: {
+          backgroundColor: "#514484",
+          borderTopWidth: 1,
+          borderColor: "#000"
+        }
+       }}
+    >
 
 
       <Tab.Screen name="Publicaciones" component={Publicaciones}></Tab.Screen>

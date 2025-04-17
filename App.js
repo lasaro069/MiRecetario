@@ -46,7 +46,12 @@ const App = () => {
             setSelectedImageProfile={setSelectedImageProfile}
           />
 
-          {/* <MainNavigation /> */}
+          <View  style={{ width: "100%", height: 520 }} >
+
+            <MainNavigation />
+
+          </View>
+
 
 
 
