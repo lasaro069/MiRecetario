@@ -1,25 +1,25 @@
 import React, {useState} from "react";
 import {ScrollView, View, Text, StyleSheet, Image, TouchableOpacity, Modal, TextInput } from "react-native";
 import { Asset } from "expo-asset";
+
+import Profile from "./components/Profile";
 import * as ImagePicker from 'expo-image-picker';
 
-const imageBanner = Asset.fromModule(require("./assets/img/fondo-cocina.jpg")).uri;
-const imageProfile = Asset.fromModule(require("./assets/img/fotofirma2.png")).uri;
+const imageProfile = Asset.fromModule(require("./assets/img/icono-imagen.png")).uri;
 const imagenFirma = Asset.fromModule(require("./assets/img/fotofirma2.png")).uri;
-const imagenReactjs = Asset.fromModule(require("./assets/img/icono-imagen.png")).uri;
-const imagenNodejs = Asset.fromModule(require("./assets/img/icono-imagen.png")).uri;
-const imagenReactNative = Asset.fromModule(require("./assets/img/icono-imagen.png")).uri;
 const leftBack = Asset.fromModule(require("./assets/img/left-arrow.png")).uri;
 
 
 const App = () => {
 
-  // Funcion para acceder a la galería y cámara del dispositivo desde la imagen del banner
+  // crear las constantes para llamar las imagenes de perfil
   const [selectedImageBanner, setSelectedImageBanner] = useState(null);
-
-  // funcion para acceder a la galeria desde la foto de perfil
   const [selectedImageProfile, setSelectedImageProfile] = useState(null);
-  
+
+
+
+
+
   // Variable para definir el estado del boton '+'
   const [modalViseble, setModalVisible] = useState(false);
 
@@ -74,41 +74,7 @@ const App = () => {
   }
 
   
-  const openImageProfile = async () => {
-    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
-    if (permissionResult.granted === false) {
-      alert('Permiso Denegado');
-      return;
-    }
-    
-    // para cambiar la imagen del banner
-    const pickerResult = await ImagePicker.launchImageLibraryAsync();
-    console.log(pickerResult);
-    
-    const { uri } = pickerResult.assets[0];
-    setSelectedImageProfile({localUri : uri });
-    console.log(selectedImageProfile)
-    
-  }
   
-  const openImageBanner = async () => {
-    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      alert('Permiso Denegado');
-      return;
-    }
-
-    // para cambiar la imagen del banner
-    const pickerResult = await ImagePicker.launchImageLibraryAsync();
-    console.log(pickerResult);
-
-    const { uri } = pickerResult.assets[0];
-    setSelectedImageBanner({localUri : uri });
-    console.log(selectedImageBanner)
-
-  }
 
 
   return(
@@ -123,25 +89,13 @@ const App = () => {
 
 
         {/* view del perfil de ususario */}
-        <View style={styles.containerProfile}>
+        <Profile 
 
-          {/* Boton para cambiar la imagen de fondo */}
-          <TouchableOpacity onPress={openImageBanner} style={styles.containerUserBanner}>
-            <Image source={{uri: selectedImageBanner !== null ? selectedImageBanner.localUri : imageBanner }} style={ styles.imageBanner } />
-
-          </TouchableOpacity>
-          
-          {/* informació del usuario */}
-          <View style={styles.containerInfoUser}>
-            <Text style={styles.textNameUser}>Luis Antonio Santos</Text>
-            <Text style={styles.textProfessionUser}>Mis Recetas Preferidas</Text>
-          </View>
-
-          {/* Boton para cambiar la imagen de perfil */}
-          <TouchableOpacity onPress={openImageProfile} style={styles.containerUserProfile}>
-            <Image source={{uri: selectedImageProfile !== null ? selectedImageProfile.localUri : imageProfile}} style={styles.imageProfile} />
-          </TouchableOpacity>
-        </View>
+          selectedImageBanner={selectedImageBanner}
+          setSelectedImageBanner={setSelectedImageBanner}
+          selectedImageProfile={selectedImageProfile}
+          setSelectedImageProfile={setSelectedImageProfile}
+        />
 
 
         {/* VIEW PARA PUBLICACIONES  */}
@@ -279,58 +233,6 @@ const App = () => {
 // Podemos crear una 'hola de estilos, importando 'StyleSheet'
 const styles = StyleSheet.create ({
 
-  // ESTILOS PARA EL PERFIL DE USUARIO
-  containerProfile: {
-    width: "100%",
-    height: 320,
-    backgroundColor: "#98D9AB"
-  },
-
-  imageBanner: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
-  },
-
-  containerUserBanner: {
-    height: 220,
-    width: "100%",
-    backgroundColor: "#ccc"
-  },
-
-  containerInfoUser: {
-    padding: 15,
-  },
-
-  textNameUser: {
-    fontSize: 25,
-    fontWeight: "bold",
-    color: "#fff",
-  },
-
-  textProfessionUser: {
-    fontSize: 12,
-    fontWeight: "200",
-    color: "#fff",
-  
-  },
-
-  containerUserProfile: {
-    width: 131,
-    height: 131,
-    borderRadius: 100,
-    borderWidth: 5,
-    borderColor: "#514484",
-    position: "absolute",
-    top: 150,
-    right: 25,
-  },
-
-  imageProfile: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 100
-  },
 
   // ESTILOS PARA PUBLICACIONES
   containerPost:{
