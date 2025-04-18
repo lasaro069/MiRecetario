@@ -26,8 +26,8 @@ const MainNavigation = () => {
     >
 
 
-      <Tab.Screen name="Publicaciones" component={Publicaciones} options={{ headerShown: false }} ></Tab.Screen>
-      <Tab.Screen name="Fotos" component={Fotos} options={{ headerShown: false }}></Tab.Screen>
+      <Tab.Screen name="Publicaciones" component={Publicaciones}></Tab.Screen>
+      <Tab.Screen name="Fotos" component={Fotos}></Tab.Screen>
 
     </Tab.Navigator>
 

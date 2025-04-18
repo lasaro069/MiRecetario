@@ -2,8 +2,6 @@ import React  from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Asset } from "expo-asset";
 
-import {useImages} from "./PhotoContext";
-
 import * as ImagePicker from 'expo-image-picker';
 
 const imageBanner = Asset.fromModule(require("../assets/img/icono-imagen.png")).uri;
@@ -11,9 +9,9 @@ const imageProfile = Asset.fromModule(require("../assets/img/icono-usuario.png")
 
 
 
-const Profile = ({selectedImageBanner, setSelectedImageBanner}) => {
+const Profile = ({selectedImageBanner, setSelectedImageBanner, selectedImageProfile, setSelectedImageProfile}) => {
 
-  const { selectedImageProfile, updateSelectedImageProfile } = useImages();
+
 
   // Funcion para acceder a la galería y cámara del dispositivo desde la imagen del banner
   const openImageBanner = async () => {
@@ -26,13 +24,11 @@ const Profile = ({selectedImageBanner, setSelectedImageBanner}) => {
 
     // para cambiar la imagen del banner
     const pickerResult = await ImagePicker.launchImageLibraryAsync();
+    console.log(pickerResult);
 
-    if (!pickerResult.canceled ) {
-      
-    }
     const { uri } = pickerResult.assets[0];
-    setSelectedImageBanner({ localUri: uri });
-
+    setSelectedImageBanner({localUri : uri });
+    console.log(selectedImageBanner)
 
   }
 
@@ -45,15 +41,13 @@ const Profile = ({selectedImageBanner, setSelectedImageBanner}) => {
       return;
     }
     
-    // para cambiar la imagen delperfil
+    // para cambiar la imagen del banner
     const pickerResult = await ImagePicker.launchImageLibraryAsync();
-
-    if (!pickerResult.canceled) {
-      
-    }
+    console.log(pickerResult);
     
     const { uri } = pickerResult.assets[0];
-    updateSelectedImageProfile( uri );
+    setSelectedImageProfile({localUri : uri });
+    console.log(selectedImageProfile)
     
   }
   
@@ -79,7 +73,7 @@ const Profile = ({selectedImageBanner, setSelectedImageBanner}) => {
 
           {/* Boton para cambiar la imagen de perfil */}
           <TouchableOpacity onPress={openImageProfile} style={styles.containerUserProfile}>
-            <Image source={{uri: selectedImageProfile !== null ? selectedImageProfile : imageProfile}} style={styles.imageProfile} />
+            <Image source={{uri: selectedImageProfile !== null ? selectedImageProfile.localUri : imageProfile}} style={styles.imageProfile} />
           </TouchableOpacity>
         </View>
 
