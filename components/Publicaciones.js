@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
 import { Asset } from "expo-asset";
 
 import { useImages } from "./PhotoContext";
@@ -14,7 +14,7 @@ const Publicaciones = () => {
 
 
   // crear las constantes para llamar las imagenes de perfil
-  const [selectedImageProfile, setSelectedImageProfile] = useState(null);
+  const {selectedImageProfile} = useImages();
   
   const [selectImagePost, setSelectImagePost] = useState(null);
 
@@ -64,7 +64,7 @@ const Publicaciones = () => {
     <>
       <View style={styles.containerPost}>
 
-        <View style={{ width: "100%", height: "100%", paddingHorizontal: 20 }}>
+        <ScrollView style={{ width: "100%", height: "100%", paddingHorizontal: 20 }}>
           {posts.length > 0 ? (
             posts
               .slice()
@@ -84,8 +84,8 @@ const Publicaciones = () => {
                   <View>
                     <View style={{ flexDirection: "row" }}>
                       <Image
-                        source={{ uri: imagenFirma }}
-                        style={{ width: 50, height: 50 }}
+                        source={{ uri: selectedImageProfile ? selectedImageProfile : imageProfile }}
+                        style={{ width: 50, height: 50, borderRadius: 25, borderWidth: 2, borderColor: "#1c0033" }}
                       />
                       <View
                         style={{
@@ -156,11 +156,11 @@ const Publicaciones = () => {
             </View>
           )}
           ;
-        </View>
+        </ScrollView>
       </View>
 
       {/* boton para ir al modal para nueva publicacion */}
-      <TouchableOpacity onPress={openModal} style={{ position: "absolute", top: 800, right: 15,  zIndex: 100, width: 50, height: 50, backgroundColor: "#ffc93c", borderRadius: 25, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+      <TouchableOpacity onPress={openModal} style={{ position: "absolute", top: 395, right: 15,  zIndex: 100, width: 50, height: 50, backgroundColor: "#ffc93c", borderRadius: 25, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
           <Text style={{color: "#fff", fontSize: 20, fontWeight: 800}} >+</Text>
       </TouchableOpacity>
 

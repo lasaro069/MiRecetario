@@ -7,16 +7,23 @@ export const ImageProvider = ({children}) => {
 
   const [ images, setImages] = useState([]);
 
+  const [selectedImageProfile, setSelectedImageProfile] = useState(null);
+
   const addImage = (newImage) => {
 
     setImages([...images, newImage])
+  }
+
+  const updateSelectedImageProfile = (newImage) => {
+
+    setSelectedImageProfile(newImage);
   }
 
 
   
   return(
 
-    <ImageContext.Provider value={{images, addImage}}>
+    <ImageContext.Provider value={{images, addImage, selectedImageProfile, updateSelectedImageProfile}}>
 
       {children};
     </ImageContext.Provider>

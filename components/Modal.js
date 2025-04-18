@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {ScrollView, View, Text, StyleSheet, Image, TouchableOpacity, Modal, TextInput } from "react-native";
 import { Asset } from "expo-asset";
 
+import { useImages } from "./PhotoContext";
+
 import * as ImagePicker from 'expo-image-picker';
 
 const imageProfile = Asset.fromModule(require("../assets/img/icono-imagen.png")).uri;
@@ -46,7 +48,7 @@ const ModalPublicaciones = ({ selectImagePost, setSelectImagePost, modalViseble,
       addPost(newPost);
       setInputText("");
       setSelectImagePost(null);
-      setModalVisible(false);
+      closeModal();
     }
   }
 
@@ -89,7 +91,7 @@ const ModalPublicaciones = ({ selectImagePost, setSelectImagePost, modalViseble,
             source={{
               uri:
                 selectedImageProfile !== null
-                  ? selectedImageProfile.localUri
+                  ? selectedImageProfile
                   : imageProfile,
             }}
             style={{
