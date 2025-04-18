@@ -10,13 +10,15 @@ const imageProfile = Asset.fromModule(require("../assets/img/icono-imagen.png"))
 const leftBack = Asset.fromModule(require("../assets/img/left-arrow.png")).uri;
 
 
-const ModalPublicaciones = ({ selectImagePost, setSelectImagePost, modalViseble, closeModal, selectedImageProfile, addPost }) => {
+const ModalPublicaciones = ({ selectImagePost, setSelectImagePost, modalViseble, closeModal,  addPost }) => {
 
 
 
 
   // constante que guarda lo que el usuario escriba
   const [inputText, setInputText] = useState("");
+
+  const { selectedImageProfile } = useImages();
 
   
   const openImagePost = async () => {

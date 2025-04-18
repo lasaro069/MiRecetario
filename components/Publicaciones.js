@@ -25,7 +25,7 @@ const Publicaciones = () => {
 
 
   // Variable para definir el estado del boton '+'
-  const [modalViseble, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   // validacion cuando abierto y cuando carrado
   const openModal = () => {
@@ -168,7 +168,7 @@ const Publicaciones = () => {
 
         selectImagePost = {selectImagePost}
         setSelectImagePost = {setSelectImagePost}
-        modalViseble = {modalViseble}
+        modalVisible = {modalVisible}
         closeModal = {closeModal}
         selectedImageProfile = {selectedImageProfile}
         addPost = {addPost}
